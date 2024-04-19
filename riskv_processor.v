@@ -18,7 +18,7 @@ output wire [4:0] rs2,
 output wire [6:0] funct7,
 output wire [63:0]writedata,
 output wire branch_finale,
-output wire signed [4:0] r,
+
 //output wire regwrite,
 output wire [63:0]readdata1,
 output wire [63:0]readdata2,
@@ -61,6 +61,5 @@ Data_Memory dm(aluout, readdata2, clk, memwrite, memread, datamemoryreaddata,ele
 Mux m3(aluout, datamemoryreaddata, memtoreg, writedata);
 branch bu(funct3, readdata1, mux2out, branch_finale);
 Mux m1(adder1_out, adder2_out,(branch&&branch_finale) , pc_in); //
-if (-1 < 0) begin
- assign r=-1; end
+
 endmodule
