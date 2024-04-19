@@ -8,7 +8,7 @@ reg reset;
  wire [63:0] adder1_out;
  wire [63:0] adder2_out;
  wire [63:0] pc_in;
-// wire branch;
+ wire branchfinale;
  wire zero;
  wire [31:0] instruction;
  wire [6:0] opcode;
@@ -52,6 +52,7 @@ reset,
   rs2,
   funct7,
   writeData,
+  branchfinale,
   readdata1,
   readdata2,
   branch, memread, memtoreg, memwrite, alusrc, regwrite,
@@ -79,4 +80,3 @@ always
     #1 clk = ~clk;
 
 endmodule
-
