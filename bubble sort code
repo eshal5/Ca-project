@@ -1,38 +1,38 @@
-add x21,x0,x0 #start adress of the array
-addi x22,x0,8 #size of the array to sort
-add x19,x0,x0 #i=0
+add x21,x0,x0 #start adress of the array #0
+addi x22,x0,8 #size of the array to sort #4
+add x19,x0,x0 #i=0                #8      
 for1tst: #outer loop
-blt x19,x22,here #if i< size jump to here
-beq x0,x0,exit1 # if not jumpt out of outer loop
+blt x19,x22,here #if i< size jump to here   #12
+beq x0,x0,exit1 # if not jumpt out of outer loop   #16
 here:
-addi x20,x19,-1 #j=i-1
+addi x20,x19,-1 #j=i-1   #20
 for2tst: #inner loop
-blt x20,x0,exit2 #if j<0 eit from innerloop
-add x1,x20,x20
-add x5,x20,x20
-add x5,x5,x1
-add x5,x5,x1
-add x5,x5,x1  #x5=x20 slli 3
-add x5,x21,x5 # x5+= adress of array
-ld x6,0(x5) # load elements from th and j+1th location and if jth item is lesser than jump to exit2
-ld  x7,8(x5)
-blt x6,x7,exit2
+blt x20,x0,exit2 #if j<0 eit from innerloop  #24
+add x1,x20,x20   #28
+add x5,x20,x20   #32
+add x5,x5,x1   #36
+add x5,x5,x1   #40
+add x5,x5,x1  #x5=x20 slli 3    #44
+add x5,x21,x5 # x5+= adress of array   #48
+ld x6,0(x5) # load elements from th and j+1th location and if jth item is lesser than jump to exit2    #52
+ld  x7,8(x5)  #56
+blt x6,x7,exit2    60
 swap: #else swap
-add x8,x20,x20
-add x13,x20,x20
-add x8,x8,x13
-add x8,x8,x13
-add x8,x8,x13
-add x8,x8,x21
-ld x9,0(x8)
-ld x12,8(x8)
-sw x12,0(x8)
-sw x9,8(x8)
-addi x20,x20,-1
-beq x0,x0,for2tst
+add x8,x20,x20     #64
+add x13,x20,x20     #68
+add x8,x8,x13     #72
+add x8,x8,x13     #76
+add x8,x8,x13     #80
+add x8,x8,x21     #84
+ld x9,0(x8)     #88
+ld x12,8(x8)     #92
+sw x12,0(x8)      #96
+sw x9,8(x8)       #100
+addi x20,x20,-1     #104
+beq x0,x0,for2tst     #108
 exit2:
-addi x19,x19,1
-beq x0,x0,for1tst
+addi x19,x19,1       #112
+beq x0,x0,for1tst      #116
 exit1:
 
 
